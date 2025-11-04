@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual da Marca - Grupo MMB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: #001D3F;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            background-color: #ffffff;
+            border-bottom: 2px solid #e5e7eb;
+            padding: 0;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+        }
+
+        .nav-tabs .container {
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-tab {
+            padding: 16px 32px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: #6b7280;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-tab:hover {
+            color: #001D3F;
+            background-color: #f9fafb;
+        }
+
+        .nav-tab.active {
+            color: #001D3F;
+            border-bottom-color: #001D3F;
+            background-color: #f9fafb;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Card */
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            color: #001D3F;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .card h3 {
+            color: #001D3F;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0 12px 0;
+        }
+
+        .card p {
+            color: #4b5563;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .card ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .card li {
+            color: #4b5563;
+            margin-bottom: 8px;
+        }
+
+        .card strong {
+            color: #001D3F;
+            font-weight: 600;
+        }
+
+        /* Logo Display */
+        .logo-display {
+            text-align: center;
+            padding: 60px 40px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            margin: 24px 0;
+        }
+
+        .logo-display img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .color-card {
+            text-align: center;
+        }
+
+        .color-swatch {
+            height: 120px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* Typography */
+        .typography-sample {
+            padding: 24px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .typography-sample h3 {
+            margin-top: 0;
+        }
+
+        .font-bold {
+            font-weight: 700;
+            font-size: 32px;
+            margin: 16px 0;
+        }
+
+        .font-light {
+            font-weight: 300;
+            font-size: 32px;
+            margin: 16px 0;
+        }
+
+        /* Variations Grid */
+        .variations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .variation-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .variation-card h4 {
+            color: #001D3F;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .variation-card img {
+            max-width: 100%;
+            height: auto;
+            max-height: 120px;
+        }
+
+        .variation-card.dark {
+            background-color: #1a1a1a;
+        }
+
+        .variation-card.dark h4 {
+            color: #ffffff;
+        }
+
+        /* Code Block */
+        .code-block {
+            background-color: #1a1a1a;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            padding: 32px 0;
+            margin-top: 60px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .nav-tab {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Manual da Marca</h1>
+            <p>Identidade Visual do Grupo MMB</p>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <div class="container">
+            <button class="nav-tab active" onclick="switchTab('grupo-mmb')">Grupo MMB</button>
+            <button class="nav-tab" onclick="switchTab('administradora')">Administradora Mutual</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Grupo MMB Tab -->
+        <div id="grupo-mmb" class="tab-content active">
+            <div class="card">
+                <h2>Logo Principal</h2>
+                <div class="logo-display">
+                    <img src="LOGOMMB.svg" alt="Logo Grupo MMB">
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Conceito do Design</h2>
+                <p>O logo do Grupo MMB foi desenvolvido para representar os três pilares fundamentais da organização: <strong>Mobilidade</strong>, <strong>Multiproteção</strong> e <strong>Benefícios</strong>.</p>
+                
+                <h3>Simbolismo</h3>
+                <p>O símbolo é composto por três círculos interconectados que formam uma estrutura unificada, representando:</p>
+                <ul>
+                    <li><strong>Conexão e Integração:</strong> Os três círculos simbolizam os três pilares do grupo trabalhando em harmonia</li>
+                    <li><strong>Continuidade:</strong> A forma circular representa ciclos completos de proteção e cuidado</li>
+                    <li><strong>Solidez:</strong> A estrutura interligada transmite estabilidade e confiança</li>
+                </ul>
+
+                <h3>Tipografia</h3>
+                <p>A fonte utilizada é moderna e geométrica, transmitindo profissionalismo e inovação. O tagline "MOBILIDADE • MULTIPROTEÇÃO • BENEFÍCIOS" reforça claramente o propósito do grupo.</p>
+            </div>
+
+            <div class="card">
+                <h2>Paleta de Cores</h2>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: #001D3F;"></div>
+                        <div class="color-name">Azul Institucional</div>
+                        <div class="color-hex">#001D3F</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #e5e7eb;"></div>
+                        <div class="color-name">Branco</div>
+                        <div class="color-hex">#FFFFFF</div>
+                    </div>
+                </div>
+                <p>O azul escuro (#001D3F) é a cor principal da marca, transmitindo confiança, segurança e profissionalismo. O branco é utilizado como cor de contraste para aplicações em fundos escuros.</p>
+            </div>
+
+            <div class="card">
+                <h2>Tipografia</h2>
+                <div class="typography-sample">
+                    <h3>Poppins</h3>
+                    <div class="font-bold">Aa Bb Cc Dd Ee</div>
+                    <p style="margin: 0; color: #6b7280;">Bold - Utilizada para títulos e destaques</p>
+                </div>
+                <div class="typography-sample">
+                    <div class="font-light">Aa Bb Cc Dd Ee</div>
+                    <p style="margin: 0; color: #6b7280;">Light - Utilizada para textos corridos</p>
+                </div>
+                <p>A fonte <strong>Poppins</strong> foi escolhida por sua geometria moderna e excelente legibilidade, alinhando-se perfeitamente com a identidade visual contemporânea do grupo.</p>
+            </div>
+
+            <div class="card">
+                <h2>Variações e Aplicações</h2>
+                <div class="variations-grid">
+                    <div class="variation-card">
+                        <h4>Versão Principal</h4>
+                        <img src="LOGOMMB.svg" alt="Logo Principal">
+                    </div>
+                    <div class="variation-card dark">
+                        <h4>Versão Negativa</h4>
+                        <img src="LOGOMMB-BRANCA.svg" alt="Logo Branco">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Favicon</h2>
+                <p>O favicon utiliza o símbolo da marca em formato SVG para garantir máxima qualidade em todas as telas e dispositivos.</p>
+                <div class="code-block">&lt;link rel="icon" href="/LOGOMMB.svg" type="image/svg+xml"&gt;</div>
+            </div>
+        </div>
+
+        <!-- Administradora Mutual Tab -->
+        <div id="administradora" class="tab-content">
+            <div class="card">
+                <h2>Logo Principal</h2>
+                <div class="logo-display">
+                    <svg width="400" height="80" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Logo da Administradora Mutual (simplificado) -->
+                        <text x="200" y="40" font-family="Poppins, sans-serif" font-size="24" font-weight="700" fill="#0D47A1" text-anchor="middle">ADMINISTRADORA</text>
+                        <text x="200" y="65" font-family="Poppins, sans-serif" font-size="32" font-weight="700" fill="#0D47A1" text-anchor="middle">MUTUAL</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Conceito do Design</h2>
+                <p>O logo foi projetado para ser abstrato, moderno e conceitual. A forma reflete os pilares da administradora: <strong>conexão</strong>, <strong>crescimento</strong> e <strong>segurança estrutural</strong>. O símbolo é formado por duas formas geométricas ascendentes que se apoiam mutuamente.</p>
+                
+                <ul>
+                    <li><strong>A Estrutura Ascendente:</strong> As formas que apontam para cima simbolizam crescimento e um futuro seguro para o patrimônio dos associados.</li>
+                    <li><strong>O Apoio Mútuo:</strong> A maneira como as duas formas se conectam representa a essência do mutualismo. A força vem da colaboração e da estrutura conjunta.</li>
+                    <li><strong>Modernidade e Abstração:</strong> O design evita clichês do setor, posicionando a marca como uma empresa contemporânea, inovadora e focada no futuro.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Paleta de Cores</h2>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: #0D47A1;"></div>
+                        <div class="color-name">Azul Confiança</div>
+                        <div class="color-hex">#0D47A1</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: #00796B;"></div>
+                        <div class="color-name">Verde Segurança</div>
+                        <div class="color-hex">#00796B</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: #4A4A4A;"></div>
+                        <div class="color-name">Cinza Escuro</div>
+                        <div class="color-hex">#4A4A4A</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: #F5F5F5; border: 1px solid #e5e7eb;"></div>
+                        <div class="color-name">Cinza Claro</div>
+                        <div class="color-hex">#F5F5F5</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Tipografia</h2>
+                <div class="typography-sample">
+                    <h3>Poppins Bold</h3>
+                    <div class="font-bold">Aa Bb Cc</div>
+                </div>
+                <div class="typography-sample">
+                    <h3>Poppins Light</h3>
+                    <div class="font-light">Aa Bb Cc</div>
+                </div>
+                <p>A fonte <strong>Poppins</strong> foi escolhida por sua clareza geométrica e visual moderno, transmitindo profissionalismo sem ser excessivamente formal.</p>
+            </div>
+
+            <div class="card">
+                <h2>Variações e Aplicações</h2>
+                <div class="variations-grid">
+                    <div class="variation-card">
+                        <h4>Versão Monocromática</h4>
+                        <p style="color: #6b7280; font-size: 14px;">Logo em uma única cor</p>
+                    </div>
+                    <div class="variation-card dark">
+                        <h4>Versão Negativa</h4>
+                        <p style="color: #d1d5db; font-size: 14px;">Logo em fundo escuro</p>
+                    </div>
+                    <div class="variation-card">
+                        <h4>Ícone (Símbolo)</h4>
+                        <p style="color: #6b7280; font-size: 14px;">Apenas o símbolo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Favicon</h2>
+                <p>O favicon utiliza o símbolo da marca em formato SVG para garantir máxima qualidade em todas as telas e dispositivos. Ele deve ser usado para representar o site em abas de navegador, favoritos e outros atalhos.</p>
+                <div class="code-block">&lt;link rel="icon" href="/caminho/para/favicon.svg" type="image/svg+xml"&gt;</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Grupo MMB - Mobilidade • Multiproteção • Benefícios</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Add active class to selected tab and content
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
