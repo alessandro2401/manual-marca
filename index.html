@@ -334,7 +334,7 @@
     <header>
         <div class="container">
             <h1>Manual da Marca</h1>
-            <p>Identidade Visual do Grupo MMB</p>
+            <p id="header-subtitle">Identidade Visual do Grupo MMB</p>
         </div>
     </header>
 
@@ -428,10 +428,18 @@
             <div class="card">
                 <h2>Logo Principal</h2>
                 <div class="logo-display">
-                    <svg width="400" height="80" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Logo da Administradora Mutual (simplificado) -->
-                        <text x="200" y="40" font-family="Poppins, sans-serif" font-size="24" font-weight="700" fill="#0D47A1" text-anchor="middle">ADMINISTRADORA</text>
-                        <text x="200" y="65" font-family="Poppins, sans-serif" font-size="32" font-weight="700" fill="#0D47A1" text-anchor="middle">MUTUAL</text>
+                    <svg width="400" height="100" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Símbolo da Administradora Mutual -->
+                        <g transform="translate(120, 25)">
+                            <!-- Forma geométrica ascendente 1 (azul) -->
+                            <path d="M 0 40 L 20 0 L 40 40 Z" fill="#0D47A1"/>
+                            <!-- Forma geométrica ascendente 2 (verde) -->
+                            <path d="M 15 40 L 35 0 L 55 40 Z" fill="#00796B"/>
+                        </g>
+                        <!-- Texto ADMINISTRADORA -->
+                        <text x="200" y="45" font-family="Poppins, sans-serif" font-size="14" font-weight="400" fill="#6b7280" text-anchor="middle" letter-spacing="1">ADMINISTRADORA</text>
+                        <!-- Texto MUTUAL -->
+                        <text x="200" y="70" font-family="Poppins, sans-serif" font-size="28" font-weight="700" fill="#0D47A1" text-anchor="middle">MUTUAL</text>
                     </svg>
                 </div>
             </div>
@@ -447,10 +455,9 @@
                 </ul>
             </div>
 
-            <div class="card">
-                <div class="two-column-layout">
-                    <div class="column-section">
-                        <h2>Paleta de Cores</h2>
+            <div class="two-column-layout">
+                <div class="card">
+                    <h2>Paleta de Cores</h2>
                         <div class="color-grid" style="grid-template-columns: repeat(2, 1fr);">
                             <div class="color-card">
                                 <div class="color-swatch" style="background-color: #0D47A1;"></div>
@@ -472,11 +479,11 @@
                                 <div class="color-name">Cinza Claro</div>
                                 <div class="color-hex">#F5F5F5</div>
                             </div>
-                        </div>
                     </div>
+                </div>
 
-                    <div class="column-section">
-                        <h2>Tipografia</h2>
+                <div class="card">
+                    <h2>Tipografia</h2>
                         <div class="typography-sample">
                             <h3>Poppins Bold</h3>
                             <div class="font-bold">Aa Bb Cc</div>
@@ -485,8 +492,7 @@
                             <h3>Poppins Light</h3>
                             <div class="font-light">Aa Bb Cc</div>
                         </div>
-                        <p>A fonte <strong>Poppins</strong> foi escolhida por sua clareza geométrica e visual moderno, transmitindo profissionalismo sem ser excessivamente formal.</p>
-                    </div>
+                    <p>A fonte <strong>Poppins</strong> foi escolhida por sua clareza geométrica e visual moderno, transmitindo profissionalismo sem ser excessivamente formal.</p>
                 </div>
             </div>
 
@@ -535,6 +541,14 @@
             // Add active class to selected tab and content
             event.target.classList.add('active');
             document.getElementById(tabId).classList.add('active');
+
+            // Update header subtitle
+            const subtitle = document.getElementById('header-subtitle');
+            if (tabId === 'grupo-mmb') {
+                subtitle.textContent = 'Identidade Visual do Grupo MMB';
+            } else if (tabId === 'administradora') {
+                subtitle.textContent = 'Administradora Mutual';
+            }
         }
     </script>
 </body>
