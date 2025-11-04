@@ -287,8 +287,30 @@
             font-size: 14px;
         }
 
+        /* Two Column Layout */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin: 24px 0;
+        }
+
+        .column-section {
+            min-width: 0;
+        }
+
+        .column-section h2 {
+            color: #001D3F;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+            }
             header h1 {
                 font-size: 24px;
             }
@@ -426,42 +448,46 @@
             </div>
 
             <div class="card">
-                <h2>Paleta de Cores</h2>
-                <div class="color-grid">
-                    <div class="color-card">
-                        <div class="color-swatch" style="background-color: #0D47A1;"></div>
-                        <div class="color-name">Azul Confiança</div>
-                        <div class="color-hex">#0D47A1</div>
+                <div class="two-column-layout">
+                    <div class="column-section">
+                        <h2>Paleta de Cores</h2>
+                        <div class="color-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <div class="color-card">
+                                <div class="color-swatch" style="background-color: #0D47A1;"></div>
+                                <div class="color-name">Azul Confiança</div>
+                                <div class="color-hex">#0D47A1</div>
+                            </div>
+                            <div class="color-card">
+                                <div class="color-swatch" style="background-color: #00796B;"></div>
+                                <div class="color-name">Verde Segurança</div>
+                                <div class="color-hex">#00796B</div>
+                            </div>
+                            <div class="color-card">
+                                <div class="color-swatch" style="background-color: #4A4A4A;"></div>
+                                <div class="color-name">Cinza Escuro</div>
+                                <div class="color-hex">#4A4A4A</div>
+                            </div>
+                            <div class="color-card">
+                                <div class="color-swatch" style="background-color: #F5F5F5; border: 1px solid #e5e7eb;"></div>
+                                <div class="color-name">Cinza Claro</div>
+                                <div class="color-hex">#F5F5F5</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="color-card">
-                        <div class="color-swatch" style="background-color: #00796B;"></div>
-                        <div class="color-name">Verde Segurança</div>
-                        <div class="color-hex">#00796B</div>
-                    </div>
-                    <div class="color-card">
-                        <div class="color-swatch" style="background-color: #4A4A4A;"></div>
-                        <div class="color-name">Cinza Escuro</div>
-                        <div class="color-hex">#4A4A4A</div>
-                    </div>
-                    <div class="color-card">
-                        <div class="color-swatch" style="background-color: #F5F5F5; border: 1px solid #e5e7eb;"></div>
-                        <div class="color-name">Cinza Claro</div>
-                        <div class="color-hex">#F5F5F5</div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card">
-                <h2>Tipografia</h2>
-                <div class="typography-sample">
-                    <h3>Poppins Bold</h3>
-                    <div class="font-bold">Aa Bb Cc</div>
+                    <div class="column-section">
+                        <h2>Tipografia</h2>
+                        <div class="typography-sample">
+                            <h3>Poppins Bold</h3>
+                            <div class="font-bold">Aa Bb Cc</div>
+                        </div>
+                        <div class="typography-sample">
+                            <h3>Poppins Light</h3>
+                            <div class="font-light">Aa Bb Cc</div>
+                        </div>
+                        <p>A fonte <strong>Poppins</strong> foi escolhida por sua clareza geométrica e visual moderno, transmitindo profissionalismo sem ser excessivamente formal.</p>
+                    </div>
                 </div>
-                <div class="typography-sample">
-                    <h3>Poppins Light</h3>
-                    <div class="font-light">Aa Bb Cc</div>
-                </div>
-                <p>A fonte <strong>Poppins</strong> foi escolhida por sua clareza geométrica e visual moderno, transmitindo profissionalismo sem ser excessivamente formal.</p>
             </div>
 
             <div class="card">
