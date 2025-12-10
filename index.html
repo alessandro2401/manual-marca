@@ -19,75 +19,141 @@
             background-color: #f5f5f5;
             color: #1a1a1a;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Layout Principal */
+        .layout {
+            display: flex;
+            min-height: 100vh;
         }
 
-        /* Header */
-        header {
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
             background-color: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 24px 0;
-            position: sticky;
+            border-right: 1px solid #e5e7eb;
+            position: fixed;
             top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
             z-index: 100;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
         }
 
-        header h1 {
+        .sidebar-header {
+            padding: 32px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            background-color: #001D3F;
+            color: white;
+        }
+
+        .sidebar-header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .sidebar-header p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .sidebar-nav {
+            padding: 16px 0;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 14px 24px;
+            color: #4b5563;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            text-align: left;
+            width: 100%;
+            background: none;
+            border-right: none;
+            border-top: none;
+            border-bottom: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-item:hover {
+            background-color: #f9fafb;
+            color: #001D3F;
+        }
+
+        .nav-item.active {
+            background-color: #f0f4ff;
+            color: #001D3F;
+            font-weight: 600;
+            border-left-color: #001D3F;
+        }
+
+        /* Content Area */
+        .content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
+            max-width: 1400px;
+        }
+
+        .content-header {
+            margin-bottom: 40px;
+        }
+
+        .content-header h2 {
             color: #001D3F;
             font-size: 32px;
             font-weight: 700;
             margin-bottom: 8px;
         }
 
-        header p {
+        .content-header p {
             color: #6b7280;
             font-size: 16px;
         }
 
-        /* Navigation Tabs */
-        .nav-tabs {
-            background-color: #ffffff;
-            border-bottom: 2px solid #e5e7eb;
-            padding: 0;
-            margin-bottom: 40px;
-            position: sticky;
-            top: 80px;
-            z-index: 99;
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 101;
+                background-color: #001D3F;
+                color: white;
+                border: none;
+                padding: 12px 16px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+            }
         }
 
-        .nav-tabs .container {
-            display: flex;
-            gap: 0;
-        }
-
-        .nav-tab {
-            padding: 16px 32px;
-            background: none;
-            border: none;
-            border-bottom: 3px solid transparent;
-            color: #6b7280;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .nav-tab:hover {
-            color: #001D3F;
-            background-color: #f9fafb;
-        }
-
-        .nav-tab.active {
-            color: #001D3F;
-            border-bottom-color: #001D3F;
-            background-color: #f9fafb;
+        .mobile-menu-btn {
+            display: none;
         }
 
         /* Tab Content */
@@ -331,30 +397,36 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Manual da Marca</h1>
-            <p id="header-subtitle">Identidade Visual do Grupo MMB</p>
-        </div>
-    </header>
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰ Menu</button>
+    
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>Manual da Marca</h1>
+                <p>Identidade Visual</p>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" onclick="switchTab('grupo-mmb')">Grupo MMB</button>
+                <button class="nav-item" onclick="switchTab('administradora')">Administradora Mutual</button>
+                <button class="nav-item" onclick="switchTab('movimento')">Movimento Mais Seguro</button>
+                <button class="nav-item" onclick="switchTab('potere-auto')">Potere Seguro Auto</button>
+                <button class="nav-item" onclick="switchTab('potere-consorcio')">Potere Consórcio</button>
+                <button class="nav-item" onclick="switchTab('juntos-pod')">Juntos Pod+</button>
+                <button class="nav-item" onclick="switchTab('mais-brasil-motorcycle')">Mais Brasil Motorcycle</button>
+                <button class="nav-item" onclick="switchTab('movimento-mais-brasil')">Movimento Mais Brasil</button>
+                <button class="nav-item" onclick="switchTab('alpha-protecoes')">Alpha Proteções</button>
+                <button class="nav-item" onclick="switchTab('solucoes-corretora')">Soluções Corretora</button>
+                <button class="nav-item" onclick="switchTab('aura-seguradora')">AURA Seguradora</button>
+            </nav>
+        </aside>
 
-    <nav class="nav-tabs">
-        <div class="container">
-            <button class="nav-tab active" onclick="switchTab('grupo-mmb')">Grupo MMB</button>
-            <button class="nav-tab" onclick="switchTab('administradora')">Administradora Mutual</button>
-            <button class="nav-tab" onclick="switchTab('movimento')">Movimento Mais Seguro</button>
-            <button class="nav-tab" onclick="switchTab('potere-auto')">Potere Seguro Auto</button>
-            <button class="nav-tab" onclick="switchTab('potere-consorcio')">Potere Consórcio</button>
-            <button class="nav-tab" onclick="switchTab('juntos-pod')">Juntos Pod+</button>
-            <button class="nav-tab" onclick="switchTab('mais-brasil-motorcycle')">Mais Brasil Motorcycle</button>
-            <button class="nav-tab" onclick="switchTab('movimento-mais-brasil')">Movimento Mais Brasil</button>
-            <button class="nav-tab" onclick="switchTab('alpha-protecoes')">Alpha Proteções</button>
-            <button class="nav-tab" onclick="switchTab('solucoes-corretora')">Soluções Corretora</button>
-            <button class="nav-tab" onclick="switchTab('aura-seguradora')">AURA Seguradora</button>
-        </div>
-    </nav>
-
-    <main class="container">
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-header">
+                <h2 id="content-title">Grupo MMB</h2>
+                <p id="content-subtitle">Identidade Visual do Grupo MMB</p>
+            </div>
         <!-- Grupo MMB Tab -->
         <div id="grupo-mmb" class="tab-content active">
             <div class="card">
@@ -2553,53 +2625,76 @@
                 </div>
             </div>
         </div>
-    </main>
+        </main>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>© 2025 Grupo MMB - Mobilidade • Multiproteção • Benefícios</p>
-        </div>
+    <footer style="margin-left: 280px; background-color: #ffffff; border-top: 1px solid #e5e7eb; padding: 24px 40px; text-align: center; color: #6b7280; font-size: 14px;">
+        <p>© 2025 Grupo MMB - Mobilidade • Multiproteção • Benefícios</p>
     </footer>
 
     <script>
         function switchTab(tabId) {
-            // Remove active class from all tabs and contents
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
+            // Remove active class from all nav items and contents
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
             });
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
 
-            // Add active class to selected tab and content
+            // Add active class to selected nav item and content
             event.target.classList.add('active');
             document.getElementById(tabId).classList.add('active');
 
-            // Update header subtitle
-            const subtitle = document.getElementById('header-subtitle');
+            // Update content header
+            const title = document.getElementById('content-title');
+            const subtitle = document.getElementById('content-subtitle');
             if (tabId === 'grupo-mmb') {
+                title.textContent = 'Grupo MMB';
                 subtitle.textContent = 'Identidade Visual do Grupo MMB';
             } else if (tabId === 'administradora') {
+                title.textContent = 'Administradora Mutual';
                 subtitle.textContent = 'Administradora Mutual';
             } else if (tabId === 'movimento') {
+                title.textContent = 'Movimento Mais Seguro';
                 subtitle.textContent = 'Movimento Mais Seguro';
             } else if (tabId === 'potere-auto') {
+                title.textContent = 'Potere Seguro Auto';
                 subtitle.textContent = 'Potere Seguro Auto';
             } else if (tabId === 'potere-consorcio') {
+                title.textContent = 'Potere Consórcio';
                 subtitle.textContent = 'Potere Consórcio';
             } else if (tabId === 'juntos-pod') {
+                title.textContent = 'Juntos Pod+';
                 subtitle.textContent = 'Juntos Pod+';
             } else if (tabId === 'mais-brasil-motorcycle') {
+                title.textContent = 'Mais Brasil Motorcycle';
                 subtitle.textContent = 'Mais Brasil Motorcycle';
             } else if (tabId === 'movimento-mais-brasil') {
+                title.textContent = 'Movimento Mais Brasil';
                 subtitle.textContent = 'Movimento Mais Brasil';
             } else if (tabId === 'alpha-protecoes') {
+                title.textContent = 'Alpha Proteções';
                 subtitle.textContent = 'Alpha Proteções';
             } else if (tabId === 'solucoes-corretora') {
+                title.textContent = 'Soluções Corretora';
                 subtitle.textContent = 'Soluções Corretora de Seguros';
             } else if (tabId === 'aura-seguradora') {
+                title.textContent = 'AURA Seguradora';
                 subtitle.textContent = 'AURA Seguradora';
             }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close sidebar on mobile
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
         }
     </script>
 </body>
